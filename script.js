@@ -5,6 +5,18 @@ const playerFactory = function(name, marker,) {
         marker
     };
 }
+
+
+const DOMController = (function() {
+     /* updates the UI for the current state of the board */
+     const render = function(currentState) {
+
+    };
+    return {
+        render,
+    }
+})();
+
 const gameBoard = (function() {
     const currentState = [[],[],[]];
     for(let i = 0; i < 3; i ++) {
@@ -13,10 +25,18 @@ const gameBoard = (function() {
         }
     }
 
-    /* updates the UI for the current state of the board */
-    const _render = function() {
 
-    };
+    
+   
+    /* returns the board to having no markers*/
+    const resetBoard = function() {
+        for(let i = 0; i < 3; i ++) {
+            for (let j = 0; j < 3; j++) {
+                currentState[i][j] = null;
+            }
+        }
+        DOMController.render();
+    }
 
     /* checks if someone has won. 
     returns null if no one has won. Returns
@@ -57,7 +77,7 @@ const gameBoard = (function() {
     const attemptMove = function(x,y,marker) {
         if(_isValid(x,y)) {
             currentState[x][y] = marker;
-            _render();
+            DOMController.render();
             return true;
         } else {
             return false;
@@ -66,6 +86,7 @@ const gameBoard = (function() {
     return {
         checkVictory,
         attemptMove,
+        resetBoard,
     }
 })();
 
@@ -78,14 +99,25 @@ const gameController = (function() {
 
     let currentPlayer = players[0];
 
-  
-    
+    /* takes a position (x,y) and attempts to make that move on the
+    gameBoard. If successful, _handlesSelection will either declare victory
+    or move on to the next turn.*/
+    const _handleMoveSelection = function(x,y) {
+        if(gameBoard.attemptMove(x,y,currentPlayer.marker)) {
+            if(gameBoard.checkVictory()) {
+                _declareVictory();
+            } else {
+                _nextTurn();
+            }
+
+        }
+    }
     const _declareVictory = function(x,y) {
 
     };
 
     const _nextTurn = function() {
-
+        
     };
 
     return {
