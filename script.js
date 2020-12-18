@@ -7,12 +7,17 @@ const playerFactory = function(name, marker,) {
 }
 const gameBoard = (function() {
     const currentState = [[],[],[]];
-    const makeMove = function(x,y) {
-    
+
+    const _render = function() {
+
+    };
+    const makeMove = function(x,y,marker) {
+        currentState[x][y] = marker;
+        _render();
     };
 
     const getCurrentState = function() {
-
+        return currentState;
     };
     return {
         makeMove,
@@ -37,7 +42,7 @@ const gameController = (function() {
     };
 
     const _declareVictory = function(x,y) {
-        
+
     };
 
     const _nextTurn = function() {
@@ -45,7 +50,7 @@ const gameController = (function() {
     };
     const attemptMove = function(x,y) {
         if(_isValid(x,y)) {
-            gameBoard.makeMove(x,y);
+            gameBoard.makeMove(x,y,currentPlayer.marker);
             if(_checkVictory()) {
                 declareVictory(); 
             } else {
