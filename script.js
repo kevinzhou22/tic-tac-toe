@@ -27,6 +27,8 @@ const DOMController = (function() {
     return {
         render,
         displayVictory,
+        switchTurn,
+        resetDisplay,
     }
 })();
 
