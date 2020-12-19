@@ -10,25 +10,29 @@ const playerFactory = function(name, marker,) {
 const DOMController = (function() {
      /* updates the UI for the current state of the board */
      const render = function(currentState) {
-
+         console.table(currentState);
     };
 
     const displayVictory = function(victorName) {
-        
+        console.log(`${victorName} wins`);
     }
+    const displayDraw = function() {
+        console.log("DRAW");
 
+    };
     const resetDisplay = function() {
-
+        console.log("DISPLAY RESET");
     };
 
     const switchTurn = function(name) {
-        
+        console.log("TURN SWITCH")
     };
     return {
         render,
         displayVictory,
         switchTurn,
         resetDisplay,
+        displayDraw,
     }
 })();
 
@@ -52,7 +56,16 @@ const gameBoard = (function() {
         }
         DOMController.render(currentState);
     }
-
+    const isBoardFull = function() {
+        for(let i = 0; i < currentState.length; i++) {
+            for(let j = 0; j < currentState[i].length; j++) {
+                if (currentState[i][j] === null) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     /* checks if someone has won. 
     returns null if no one has won. Returns
     the marker of the victor if someone has won*/
@@ -102,6 +115,7 @@ const gameBoard = (function() {
         checkVictory,
         attemptMove,
         resetBoard,
+        isBoardFull,
     }
 })();
 
@@ -122,7 +136,12 @@ const gameController = (function() {
             if(gameBoard.checkVictory()) {
                 _declareVictory();
             } else {
-                _nextTurn();
+                if(gameBoard.isBoardFull()) {
+                    _declareDraw();
+                } else {
+                    _nextTurn();
+                }
+                
             }
 
         }
@@ -131,6 +150,11 @@ const gameController = (function() {
     /* instructs the DOM to alter the UI to display victory */
     const _declareVictory = function() {
         DOMController.displayVictory(currentPlayer.name);
+    };
+
+    /* instructs the DOM to alter the UI to display a draw */
+    const _declareDraw = function() {
+        DOMController.displayDraw();
     };
 
     /* sets up the game for a new round */
