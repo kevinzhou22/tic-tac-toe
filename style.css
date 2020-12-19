@@ -9,3 +9,95 @@ html {
 --navajo-white: #FFE0B5;
 --peach-puff: #FEE1C7;
 }
+
+body {
+    font-family: sans-serif;
+    background-color: var(--raisin-black);
+}
+
+h1 {
+    margin: 8rem 0 6rem 0;
+    text-align: center;
+    font-size: 5rem;
+    color: var(--peach-puff);
+    font-weight: bold;
+    text-shadow: 2px 2px 1px var(--steel-blue);
+
+}
+
+.announcer {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--peach-puff);
+}
+.tic-tac-toe-grid {
+    height: 50rem;
+    width: 50rem;
+    background-color: white;
+    margin: 3rem auto 2rem auto;
+    background-color: var(--navajo-white);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--steel-blue);
+    border-radius: 15px;
+}
+
+.new-game-container {
+    width: 120%;
+    height: 120%;
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    background-color: rgba(50,50,50,0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    display: none;
+}
+button {
+    padding: 0.7rem 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.6rem;
+    background-color: var(--peach-puff);
+}
+button:focus {
+    outline: none;
+}
+button:hover {
+    filter: brightness(1.05);
+    cursor: pointer;    
+}
+button:active {
+    transform: scale(0.96);
+}
+
+.board {
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(3,1fr);
+    gap: 0.7rem;
+    padding: 0.7rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 2%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.square {
+    background-color: var(--steel-blue);
+    border-radius: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10rem;
+    color: white;
+}
+
+.square:hover {
+    filter: brightness(1.05);
+    cursor: pointer;
+}
