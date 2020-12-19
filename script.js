@@ -111,7 +111,7 @@ const gameController = (function() {
     /* takes a position (x,y) and attempts to make that move on the
     gameBoard. If successful, _handlesSelection will either declare victory
     or move on to the next turn.*/
-    const _handleMoveSelection = function(x,y) {
+    const handleMoveSelection = function(x,y) {
         if(gameBoard.attemptMove(x,y,currentPlayer.marker)) {
             if(gameBoard.checkVictory()) {
                 _declareVictory();
@@ -132,7 +132,6 @@ const gameController = (function() {
         gameBoard.resetBoard();
         currentPlayer = players[0];
         DOMController.resetDisplay();
-
     };
 
     const _nextTurn = function() {
@@ -140,6 +139,8 @@ const gameController = (function() {
     };
 
     return {
+        handleMoveSelection,
+        restartGame,
     }
 })();
 
