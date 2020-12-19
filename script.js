@@ -50,7 +50,7 @@ const gameBoard = (function() {
                 currentState[i][j] = null;
             }
         }
-        DOMController.render();
+        DOMController.render(currentState);
     }
 
     /* checks if someone has won. 
@@ -92,7 +92,7 @@ const gameBoard = (function() {
     const attemptMove = function(x,y,marker) {
         if(_isValid(x,y)) {
             currentState[x][y] = marker;
-            DOMController.render();
+            DOMController.render(currentState);
             return true;
         } else {
             return false;
