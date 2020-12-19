@@ -12,8 +12,17 @@ const DOMController = (function() {
      const render = function(currentState) {
 
     };
+
+    const displayVictory = function(victorName) {
+        
+    }
+
+    const resetDisplay = function() {
+
+    };
     return {
         render,
+        displayVictory,
     }
 })();
 
@@ -25,7 +34,7 @@ const gameBoard = (function() {
         }
     }
 
-
+    
     
    
     /* returns the board to having no markers*/
@@ -112,7 +121,17 @@ const gameController = (function() {
 
         }
     }
-    const _declareVictory = function(x,y) {
+
+    /* instructs the DOM to alter the UI to display victory */
+    const _declareVictory = function() {
+        DOMController.displayVictory(currentPlayer.name);
+    };
+
+    /* sets up the game for a new round */
+    const restartGame = function() {
+        gameBoard.resetBoard();
+        currentPlayer = players[0];
+        DOMController.resetDisplay();
 
     };
 
