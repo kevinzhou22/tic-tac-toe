@@ -20,6 +20,10 @@ const DOMController = (function() {
     const resetDisplay = function() {
 
     };
+
+    const switchTurn = function(name) {
+        
+    };
     return {
         render,
         displayVictory,
@@ -135,7 +139,9 @@ const gameController = (function() {
     };
 
     const _nextTurn = function() {
-        
+        let nextPlayer = (players.indexOf(currentPlayer) + 1) % players.length;
+        currentPlayer = players[nextPlayer];
+        DOMController.switchTurn(currentPlayer.name);
     };
 
     return {
