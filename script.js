@@ -78,7 +78,7 @@ const gameBoard = (function() {
 
     /* checks if a position is valid */
     const _isValid = function(x,y) {
-        if(currentState[i][j] === null) {
+        if(currentState[x][y] !== null) {
             return false;
         } else {
             return true;
