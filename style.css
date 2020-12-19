@@ -1,3 +1,11 @@
 html {
     font-size: 62.5%;
 }
+
+:root {
+--raisin-black: #272932;
+--steel-blue: #4d7ea8;
+--gray-web: #828489;
+--navajo-white: #FFE0B5;
+--peach-puff: #FEE1C7;
+}
