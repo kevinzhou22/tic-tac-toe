@@ -1,4 +1,5 @@
 
+/* Creates objects that represent players*/
 const playerFactory = function(name, marker,) {
     return {
         name,
@@ -6,7 +7,7 @@ const playerFactory = function(name, marker,) {
     };
 }
 
-
+/* Handles input and control of the DOM */
 const DOMController = (function() {
 
     // cache DOM
@@ -56,7 +57,7 @@ const DOMController = (function() {
         newGameContainer.style.display = "flex";
     };
 
-
+    /* resets the display for restarting the game */
     const resetDisplay = function(firstMovePlayerName) {
         const emptyBoard = [];
         for(let i = 0; i < 3; i++) {
@@ -66,10 +67,12 @@ const DOMController = (function() {
         _updateDisplayText(firstMovePlayerName, ", make your move!");
     };
 
+    /* updates the display text to reflect that it is a new player's turn */
     const switchTurn = function(name) {
         _updateDisplayText(name, ", it's your turn!");
     };
 
+    /* callback function for handling users clicking on the squares of the tic-tac-toe board */
     const _onClickOfSquare = function(e) {
         const positions = e.currentTarget.getAttribute("data-position").split("-");
         const x = positions[0];
@@ -77,11 +80,14 @@ const DOMController = (function() {
         gameController.handleMoveSelection(x,y);
     };
 
+    /* callback function for handling the "New Game" button */
     const _onClickOfNewGameButton = function(e) {
         e.currentTarget.parentNode.style.display = "none";
         gameController.restartGame();
     };
 
+
+    /* Sets up initialization of the UI for the beginning of the game*/
     const initialize = function(player1Name) {        
 
         // set up initial text
@@ -93,7 +99,7 @@ const DOMController = (function() {
         const restOfText = document.createTextNode(", it's your turn!");
         displayText.appendChild(restOfText);
 
-        // add squares and append event listener
+        // add squares and append event listeners
         for(let y = 0; y < 3; y++) {
             for(let x = 0; x < 3; x++) {
                 const square = document.createElement("div");
@@ -119,6 +125,7 @@ const DOMController = (function() {
     }
 })();
 
+/* Handles the state of the game board*/
 const gameBoard = (function() {
     const currentState = [];
     for(let i = 0; i < 3; i ++) {
@@ -140,6 +147,8 @@ const gameBoard = (function() {
         }
         DOMController.render(currentState);
     }
+
+    /* Checks if the board is completely filled with user input */
     const isBoardFull = function() {
         for(let i = 0; i < currentState.length; i++) {
             for(let j = 0; j < currentState[i].length; j++) {
@@ -205,6 +214,7 @@ const gameBoard = (function() {
     }
 })();
 
+/* Handles game logic*/
 const gameController = (function() {
     
     // set up players
@@ -252,6 +262,8 @@ const gameController = (function() {
         DOMController.resetDisplay(players[0].name);
     };
 
+    /* switches control of input from one player to the other, changing displays
+    to reflect that*/
     const _nextTurn = function() {
         let nextPlayer = (players.indexOf(currentPlayer) + 1) % players.length;
         currentPlayer = players[nextPlayer];
