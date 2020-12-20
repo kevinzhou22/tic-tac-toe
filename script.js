@@ -47,13 +47,13 @@ const DOMController = (function() {
     /* Updates displayText to accounce a victory and prevents further moves*/
     const displayVictory = function(victorName) {
         _updateDisplayText(victorName, " wins!");
-        board.newGameContainer.display = "block";
+        newGameContainer.style.display = "flex";
     }
 
     /* Updates displayText to accounce a draw and prevents further moves*/
     const displayDraw = function() {
         _updateDisplayText(null, "It's a draw!");
-        board.newGameContainer.display = "block";
+        newGameContainer.style.display = "flex";
     };
 
 
