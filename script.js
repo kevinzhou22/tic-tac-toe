@@ -78,6 +78,7 @@ const DOMController = (function() {
 
     const _onClickOfNewGameButton = function(e) {
         e.currentTarget.parentNode.style.display = "none";
+        gameController.restartGame();
     };
 
     const initialize = function(player1Name) {        
