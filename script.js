@@ -188,6 +188,7 @@ const gameBoard = (function() {
         if(_isValid(x,y)) {
             currentState[x][y] = marker;
             DOMController.render(currentState);
+            return true;
         } else {
             return false;
         }
