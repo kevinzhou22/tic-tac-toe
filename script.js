@@ -156,20 +156,22 @@ const gameBoard = (function() {
     const checkVictory = function() {
         for(let i = 0; i < 3; i++) {
             if(currentState[i][0] === currentState[i][1] &&
-                        currentState[i][1] === currentState[i][2]) {
+                        currentState[i][1] === currentState[i][2] & currentState[i][0] !== null) {
                 return currentState[i][1];
             }
         }
         for(let i = 0; i < 3; i++) {
             if(currentState[0][i] === currentState[1][i] &&
-                        currentState[1][i] === currentState[2][i]) {
+                        currentState[1][i] === currentState[2][i] && currentState[0][i] !== null) {
                 return currentState[1][i];
             }
         }
-        if(currentState[0][0] ===currentState[1][1] && currentState[1][1] === currentState[2][2]) {
+        if(currentState[0][0] ===currentState[1][1] && currentState[1][1] === currentState[2][2] &&
+                currentState[0][0] !== null) {
             return currentState[1][1];
         }
-        if(currentState[2][0] ===currentState[1][1] && currentState[1][1] === currentState[0][2]) {
+        if(currentState[2][0] ===currentState[1][1] && currentState[1][1] === currentState[0][2] &&
+                currentState[2][0] !== null) {
             return currentState[1][1];
         }
         return null;
