@@ -57,12 +57,13 @@ const DOMController = (function() {
     };
 
 
-    const resetDisplay = function() {
+    const resetDisplay = function(firstMovePlayerName) {
         const emptyBoard = [];
         for(let i = 0; i < 3; i++) {
             emptyBoard.push([null,null,null]);
         }
         render(emptyBoard);
+        _updateDisplayText(firstMovePlayerName, ", make your move!");
     };
 
     const switchTurn = function(name) {
@@ -246,7 +247,7 @@ const gameController = (function() {
     const restartGame = function() {
         gameBoard.resetBoard();
         currentPlayer = players[0];
-        DOMController.resetDisplay();
+        DOMController.resetDisplay(players[0].name);
     };
 
     const _nextTurn = function() {
