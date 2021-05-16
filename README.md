@@ -1,3 +1,7 @@
+# Tic Tac Toe
+Basic website built while learning JavaScript.
+
+## Reflection
 This mini-project was intended to be practice for implementing factory functions and the revealing module pattern.
 As the first program in which I divided code and tried to limit spillover into the global namespace, it was somewhat
 challenging deciding what pieces of data and behavior should go where. Ultimately, I decided to go with what I felt
